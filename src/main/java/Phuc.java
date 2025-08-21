@@ -1,26 +1,24 @@
 import java.util.Scanner;
 
 public class Phuc {
-    private final Userinterface Ui;
+    private final Processinput pi;
 
     public Phuc() {
-        this.Ui = new Userinterface();
+        this.pi = new Processinput();
     }
 
     public void run() {
-        Ui.sayHello();
+        pi.start();
 
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
         while (!input.equals("bye")) {
-            Ui.addlist(input);
+            pi.Process(input);
             input = sc.nextLine();
         }
 
-        Ui.sayGoodbye();
+        pi.end();
         sc.close();
-
-
     }
 }
