@@ -1,9 +1,9 @@
-public class Userinterface {
+public class UserInterface {
     private final String line = "____________________________________________________________";
     private final Task task[];
     private Integer count = 0;
 
-    public Userinterface() {
+    public UserInterface() {
         task = new Task[100];
     }
 
@@ -50,7 +50,7 @@ public class Userinterface {
         print("Nice! I've marked this task as done:\n" + task[id].printtask());
     }
 
-    public void unmark(String num) {
+    public void unMark(String num) {
         int id = Integer.parseInt(num)-1;
         task[id].setNotDone();
         print("OK, I've marked this task as not done yet:\n" + task[id].printtask());

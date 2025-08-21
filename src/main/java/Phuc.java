@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Phuc {
-    private final Processinput pi;
+    private final ProcessInput pi;
 
     public Phuc() {
-        this.pi = new Processinput();
+        this.pi = new ProcessInput();
     }
 
     public void run() {
@@ -14,7 +14,7 @@ public class Phuc {
         String input = sc.nextLine();
 
         while (!input.equals("bye")) {
-            pi.Process(input);
+            pi.process(input);
             input = sc.nextLine();
         }
 

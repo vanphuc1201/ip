@@ -1,7 +1,7 @@
-public class Processinput {
-    Userinterface Ui = new Userinterface();
+public class ProcessInput {
+    UserInterface Ui = new UserInterface();
 
-    public Processinput() {
+    public ProcessInput() {
 
     }
 
@@ -13,7 +13,7 @@ public class Processinput {
         Ui.sayGoodbye();
     }
 
-    public void Process(String input) {
+    public void process(String input) {
         String[] words = input.split(" ", 2);
         String command = words[0];
         String arg = words.length > 1 ? words[1] : "";
@@ -23,7 +23,7 @@ public class Processinput {
                 Ui.list();
                 break;
             case "unmark":
-                Ui.unmark(arg);
+                Ui.unMark(arg);
                 break;
             case "mark":
                 Ui.mark(arg);
