@@ -14,7 +14,7 @@ public class Phuc {
         String input = sc.nextLine();
 
         while (!input.equals("bye")) {
-            Ui.echo(input);
+            Ui.addlist(input);
             input = sc.nextLine();
         }
 
