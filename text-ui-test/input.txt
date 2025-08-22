@@ -4,4 +4,11 @@ event project meeting /from Mon 2pm /to 4pm
 list
 deadline do homework /by no idea :-p
 list
+hghgjhkh
+todo
+deadline go fishing
+event cooking
+mark 36
+delete 2
+list
 bye
