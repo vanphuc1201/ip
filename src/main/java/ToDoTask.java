@@ -3,8 +3,17 @@ public class ToDoTask extends Task{
         super(description);
     }
 
+    public ToDoTask(String description, boolean isDone) {
+        super(description, isDone);
+    }
+
     @Override
-    public String printTask() {
-        return "[T]" + super.printTask();
+    public String writeToFile() {
+        return "T | " + isDone + " | " + description;
+    }
+
+    @Override
+    public String toString() {
+        return "[T]" + super.toString();
     }
 }
