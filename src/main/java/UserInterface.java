@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserInterface {
@@ -15,9 +16,7 @@ public class UserInterface {
     public void load() throws PhucException {
         try {
             task.clear();
-            for (Task t : storage.load()) {
-                task.add(t);
-            }
+            task.addAll(storage.load());
             count = task.size();
         } catch (IOException e) {
             throw new PhucException("Failed to load tasks: " + e.getMessage());
@@ -54,7 +53,7 @@ public class UserInterface {
     public void list() {
         String temp = "Here are the tasks in your list:\n";
         for(int i=0; i<count; i++) {
-            temp += Integer.toString(i+1) + ". ";
+            temp += (i+1) + ". ";
             temp += task.get(i) + "\n";
         }
 
@@ -76,7 +75,7 @@ public class UserInterface {
     }
 
     public String notiNumOfTasks() {
-        return "Now you have " + Integer.toString(count+1) + " tasks in the list.";
+        return "Now you have " + (count+1) + " tasks in the list.";
     }
 
     public String notiAddTasks() {
@@ -90,15 +89,15 @@ public class UserInterface {
         count++;
     }
 
-    public void deadline(String newtask, String deadline) {
+    public void deadline(String newtask, LocalDateTime deadline) {
         task.add(new DeadlineTask(newtask, deadline));
         String temp = notiAddTasks() + task.get(count) + "\n" + this.notiNumOfTasks();
         print(temp);
         count++;
     }
 
-    public void event(String newtask, String from, String to) {
-        task.add(new EventTask(newtask, from, to));
+    public void event(String newtask, LocalDateTime startDate, LocalDateTime endDate) {
+        task.add(new EventTask(newtask, startDate, endDate));
         String temp = notiAddTasks() + task.get(count) + "\n" + this.notiNumOfTasks();
         print(temp);
         count++;
