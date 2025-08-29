@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public class ProcessInput {
     private final UserInterface ui = new UserInterface();
 
@@ -57,12 +59,15 @@ public class ProcessInput {
 
     private void handleEvent(String arguments) throws PhucException {
         String[] eventArg = ErrorHandler.validateEventFormat(arguments);
-        ui.event(eventArg[0], eventArg[1], eventArg[2]);
+        LocalDateTime startDate = ErrorHandler.validateAndParseDateTime(eventArg[1]);
+        LocalDateTime endDate = ErrorHandler.validateAndParseDateTime(eventArg[2]);
+        ui.event(eventArg[0], startDate, endDate);
     }
 
     private void handleDeadline(String arguments) throws PhucException {
         String[] deadlineArg = ErrorHandler.validateDeadlineFormat(arguments);
-        ui.deadline(deadlineArg[0], deadlineArg[1]);
+        LocalDateTime deadline = ErrorHandler.validateAndParseDateTime(deadlineArg[1]);
+        ui.deadline(deadlineArg[0], deadline);
     }
 
     private void handleTodo(String arguments) throws PhucException {
