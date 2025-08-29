@@ -1,21 +1,17 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
-    private static final String DEFAULT_FILE_PATH = "./data/phuc.txt";
-    private static final String DATA_DIRECTORY = "./data/";
+    private static final String DEFAULT_FILE_PATH = "./data/Phuc.txt";
 
     private final String filePath;
 
     public Storage() {
         this.filePath = DEFAULT_FILE_PATH;
-    }
-
-    public Storage(String filePath) {
-        this.filePath = filePath;
     }
 
     public void save(ArrayList<Task> tasks) throws IOException {
@@ -30,7 +26,7 @@ public class Storage {
         }
     }
 
-    public ArrayList<Task> load() throws IOException {
+    public ArrayList<Task> load() throws IOException, PhucException {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
 
@@ -49,10 +45,13 @@ public class Storage {
 
                 switch (parts[0]) {
                 case "E":
-                    tasks.add(new EventTask(parts[2], parts[3], parts[4], isDone));
+                    LocalDateTime startDate = ErrorHandler.validateAndParseDateTime(parts[3]);
+                    LocalDateTime endDate = ErrorHandler.validateAndParseDateTime(parts[4]);
+                    tasks.add(new EventTask(parts[2], startDate, endDate, isDone));
                     break;
                 case "D":
-                    tasks.add(new DeadlineTask(parts[2], parts[3], isDone));
+                    LocalDateTime deadline = ErrorHandler.validateAndParseDateTime(parts[3]);
+                    tasks.add(new DeadlineTask(parts[2], deadline, isDone));
                     break;
                 case "T":
                     tasks.add(new ToDoTask(parts[2], isDone));
