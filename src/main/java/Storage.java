@@ -14,20 +14,20 @@ public class Storage {
         this.filePath = DEFAULT_FILE_PATH;
     }
 
-    public void save(ArrayList<Task> tasks) throws IOException {
+    public void save(TaskList tasks) throws IOException {
         java.io.File file = new java.io.File(filePath);
         file.getParentFile().mkdirs();
 
         try (FileWriter writer = new FileWriter(file)) {
-            for (Task task : tasks) {
+            for (Task task : tasks.getAllTasks()) {
                 writer.write(task.writeToFile());
                 writer.write("\n");
             }
         }
     }
 
-    public ArrayList<Task> load() throws IOException, PhucException {
-        ArrayList<Task> tasks = new ArrayList<>();
+    public TaskList load() throws IOException, PhucException {
+        TaskList tasks = new TaskList();
         File file = new File(filePath);
 
         if (!file.exists()) {

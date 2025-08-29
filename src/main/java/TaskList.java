@@ -39,11 +39,10 @@ public class TaskList {
     /**
      * Removes a task by index
      * @param index the 0-based index of the task to remove
-     * @return the removed task
      * @throws IndexOutOfBoundsException if index is invalid
      */
-    public Task remove(int index) {
-        return tasks.remove(index);
+    public void remove(int index) {
+        tasks.remove(index);
     }
 
     /**
@@ -80,4 +79,6 @@ public class TaskList {
     public void addAll(ArrayList<Task> tasks) {
         this.tasks.addAll(tasks);
     }
+
+
 }
