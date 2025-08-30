@@ -82,5 +82,23 @@ public class TaskList {
         this.tasks.addAll(tasks);
     }
 
+    /**
+     * Finds all the task that contain the keyword
+     * Returns the list that contain all the tasks have the keyword
+     *
+     * @param keyword string input is the key word need to find
+     * @return a task list contain all the task that need searching
+     */
+    public ArrayList<Task> find(String keyword) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
+        String searchTerm = keyword.toLowerCase();
 
+        for (Task currentTask : tasks) {
+            if (currentTask.getDescription().toLowerCase().contains(searchTerm)) {
+                matchingTasks.add(currentTask);
+            }
+        }
+
+        return matchingTasks;
+    }
 }
