@@ -27,7 +27,6 @@ public class TaskList {
 
     /**
      * Adds a task to the list
-     *
      * @param task the task to add
      */
     public void add(Task task) {
@@ -36,9 +35,9 @@ public class TaskList {
 
     /**
      * Gets a task by index
-     *
      * @param index the 0-based index of the task
      * @return the task at the specified index
+     * @throws IndexOutOfBoundsException if index is invalid
      */
     public Task get(int index) {
         return tasks.get(index);
@@ -46,9 +45,8 @@ public class TaskList {
 
     /**
      * Removes a task by index
-     *
      * @param index the 0-based index of the task to remove
-     * @return the removed task
+     * @throws IndexOutOfBoundsException if index is invalid
      */
     public Task remove(int index) {
         return tasks.remove(index);
@@ -56,7 +54,6 @@ public class TaskList {
 
     /**
      * Gets the number of tasks in the list
-     *
      * @return the number of tasks
      */
     public int size() {
@@ -65,7 +62,6 @@ public class TaskList {
 
     /**
      * Checks if the task list is empty
-     *
      * @return true if the list is empty, false otherwise
      */
     public boolean isEmpty() {
@@ -74,7 +70,6 @@ public class TaskList {
 
     /**
      * Gets all tasks as a list
-     *
      * @return a copy of all tasks
      */
     public ArrayList<Task> getAllTasks() {
@@ -88,12 +83,27 @@ public class TaskList {
         tasks.clear();
     }
 
-    /**
-     * Adds all tasks from another collection to this task list.
-     *
-     * @param tasks the collection of tasks to add
-     */
     public void addAll(ArrayList<Task> tasks) {
         this.tasks.addAll(tasks);
+    }
+
+    /**
+     * Finds all the task that contain the keyword
+     * Returns the list that contain all the tasks have the keyword
+     *
+     * @param keyword string input is the key word need to find
+     * @return a task list contain all the task that need searching
+     */
+    public ArrayList<Task> find(String keyword) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
+        String searchTerm = keyword.toLowerCase();
+
+        for (Task currentTask : tasks) {
+            if (currentTask.getDescription().toLowerCase().contains(searchTerm)) {
+                matchingTasks.add(currentTask);
+            }
+        }
+
+        return matchingTasks;
     }
 }

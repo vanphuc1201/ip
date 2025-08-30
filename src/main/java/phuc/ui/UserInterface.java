@@ -1,5 +1,6 @@
 package phuc.ui;
 
+import phuc.model.Task;
 import phuc.model.TaskList;
 import phuc.storage.Storage;
 import phuc.exception.PhucException;
@@ -8,6 +9,7 @@ import phuc.model.EventTask;
 import phuc.model.ToDoTask;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  * User interface class that handles all user interactions and display.
@@ -15,8 +17,8 @@ import java.time.LocalDateTime;
  */
 public class UserInterface {
     private static final String LINE = "____________________________________________________________";
-    private final TaskList task;
-    private int count = 0;
+    private final TaskList taskList;
+    private Integer count = 0;
     private final Storage storage;
 
     /**
@@ -24,9 +26,34 @@ public class UserInterface {
      * Initializes the task list and storage components.
      */
     public UserInterface() {
-        this.task = new TaskList();
+        this.taskList = new TaskList();
         this.storage = new Storage();
     }
+
+    /**
+     * Finds all the tasks contain keyword then print out to the user
+     *
+     * @param word a string keyword that need to find
+     */
+    public void find(String word) {
+        ArrayList<Task> tasks = taskList.find(word);
+
+        if (tasks.isEmpty()) {
+            print("No tasks found for word: " + word);
+        } else {
+            StringBuilder temp = new StringBuilder("Here are the matching tasks in your list:\n");
+            for (int i = 0; i < tasks.size(); i++) {
+                temp.append(i + 1).append(". ")
+                        .append(tasks.get(i))
+                        .append("\n");
+            }
+
+            System.out.println(LINE);
+            System.out.print(temp);
+            System.out.println(LINE);
+        }
+    }
+
 
     /**
      * Loads tasks from storage into the task list.
@@ -35,9 +62,9 @@ public class UserInterface {
      */
     public void load() throws PhucException {
         try {
-            task.clear();
-            task.addAll(storage.load().getAllTasks());
-            count = task.size();
+            taskList.clear();
+            taskList.addAll(storage.load().getAllTasks());
+            count = taskList.size();
         } catch (IOException e) {
             throw new PhucException("Failed to load tasks: " + e.getMessage());
         }
@@ -50,7 +77,7 @@ public class UserInterface {
      */
     public void saveToStorage() throws PhucException {
         try {
-            storage.save(task);
+            storage.save(taskList);
         } catch (IOException e) {
             throw new PhucException("Failed to save tasks: " + e.getMessage());
         }
@@ -98,7 +125,7 @@ public class UserInterface {
         StringBuilder temp = new StringBuilder("Here are the tasks in your list:\n");
         for (int i = 0; i < count; i++) {
             temp.append(i + 1).append(". ")
-                    .append(task.get(i))
+                    .append(taskList.get(i))
                     .append("\n");
         }
 
@@ -114,8 +141,8 @@ public class UserInterface {
      */
     public void mark(String num) {
         int id = Integer.parseInt(num)-1;
-        task.get(id).setDone();
-        print("Nice! I've marked this task as done:\n" + task.get(id));
+        taskList.get(id).setDone();
+        print("Nice! I've marked this task as done:\n" + taskList.get(id));
     }
 
     /**
@@ -125,8 +152,8 @@ public class UserInterface {
      */
     public void unMark(String num) {
         int id = Integer.parseInt(num)-1;
-        task.get(id).setNotDone();
-        print("OK, I've marked this task as not done yet:\n" + task.get(id));
+        taskList.get(id).setNotDone();
+        print("OK, I've marked this task as not done yet:\n" + taskList.get(id));
     }
 
     /**
@@ -154,8 +181,8 @@ public class UserInterface {
      * @param newtask the description of the to-do task
      */
     public void toDo(String newtask) {
-        task.add(new ToDoTask(newtask));
-        String temp = notiAddTasks() + task.get(count) + "\n" + this.notiNumOfTasks();
+        taskList.add(new ToDoTask(newtask));
+        String temp = notiAddTasks() + taskList.get(count) + "\n" + this.notiNumOfTasks();
         print(temp);
         count++;
     }
@@ -168,8 +195,8 @@ public class UserInterface {
      * @param deadline the deadline date and time
      */
     public void deadline(String newtask, LocalDateTime deadline) {
-        task.add(new DeadlineTask(newtask, deadline));
-        String temp = notiAddTasks() + task.get(count) + "\n" + this.notiNumOfTasks();
+        taskList.add(new DeadlineTask(newtask, deadline));
+        String temp = notiAddTasks() + taskList.get(count) + "\n" + this.notiNumOfTasks();
         print(temp);
         count++;
     }
@@ -183,8 +210,8 @@ public class UserInterface {
      * @param endDate the event end date and time
      */
     public void event(String newtask, LocalDateTime startDate, LocalDateTime endDate) {
-        task.add(new EventTask(newtask, startDate, endDate));
-        String temp = notiAddTasks() + task.get(count) + "\n" + this.notiNumOfTasks();
+        taskList.add(new EventTask(newtask, startDate, endDate));
+        String temp = notiAddTasks() + taskList.get(count) + "\n" + this.notiNumOfTasks();
         print(temp);
         count++;
     }
@@ -196,11 +223,11 @@ public class UserInterface {
      * @param num the task number to delete (1-based index)
      */
     public void delete(String num) {
-        count -= 2;
+        count-=2;
         String temp = "Noted. I've removed this task:\n" +
-                    task.get(Integer.parseInt(num)-1) + "\n" +
+                    taskList.get(Integer.parseInt(num)-1) + "\n" +
                     this.notiNumOfTasks();
-        task.remove(Integer.parseInt(num)-1);
+        taskList.remove(Integer.parseInt(num)-1);
         print(temp);
         count++;
     }

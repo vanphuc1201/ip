@@ -2,3 +2,16 @@ T | false | Buy groceries
 D | true | Submit report | 15/12/2023 1700
 D | true | Finish chapter | 16/12/2023 2300
 E | false | Birthday party | 16/12/2023 1800 | 17/12/2023 0200
+T | true | Call mom
+D | false | Pay electricity bill | 20/12/2023 1200
+T | false | Clean the house
+E | true | Team meeting | 21/12/2023 0900 | 21/12/2023 1100
+D | false | Finish coding assignment | 22/12/2023 2359
+T | false | Read book
+E | false | Conference | 23/12/2023 1000 | 23/12/2023 1700
+D | true | Submit tax documents | 24/12/2023 1600
+T | true | Water the plants
+E | false | Family dinner | 25/12/2023 1900 | 25/12/2023 2200
+D | false | Renew gym membership | 26/12/2023 1800
+D | true | Submit book report | 15/12/2023 1700
+E | true | Team book meeting | 21/12/2023 0900 | 21/12/2023 1100

@@ -53,6 +53,9 @@ public class ProcessInput {
         String arg = words.length > 1 ? words[1] : "";
 
         switch (command) {
+        case "find":
+            ui.find(arg);
+            break;
         case "delete":
             handleDelete(arg);
             break;
