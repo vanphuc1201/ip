@@ -81,6 +81,4 @@ public class TaskList {
     public void addAll(ArrayList<Task> tasks) {
         this.tasks.addAll(tasks);
     }
-
-
 }

@@ -1,6 +1,6 @@
 package phuc.parser;
 
-import phuc.errorhandle.ErrorHandler;
+import phuc.util.ErrorHandler;
 import phuc.ui.UserInterface;
 import phuc.exception.PhucException;
 import java.time.LocalDateTime;
