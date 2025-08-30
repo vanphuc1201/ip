@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
  * Provides methods for displaying messages, handling commands, and managing tasks.
  */
 public class UserInterface {
-    private static final String line = "____________________________________________________________";
+    private static final String LINE = "____________________________________________________________";
     private final TaskList task;
-    private Integer count = 0;
+    private int count = 0;
     private final Storage storage;
 
     /**
@@ -62,7 +62,7 @@ public class UserInterface {
      * @return the number of tasks plus one (for 1-based indexing)
      */
     public int numTasks() {
-        return count+1;
+        return count + 1;
     }
 
     /**
@@ -71,9 +71,9 @@ public class UserInterface {
      * @param input the message to print
      */
     public void print(String input) {
-        System.out.println(line);
+        System.out.println(LINE);
         System.out.println(input);
-        System.out.println(line);
+        System.out.println(LINE);
     }
 
     /**
@@ -95,15 +95,16 @@ public class UserInterface {
      * Lists all tasks in the task list.
      */
     public void list() {
-        String temp = "Here are the tasks in your list:\n";
-        for(int i=0; i<count; i++) {
-            temp += (i+1) + ". ";
-            temp += task.get(i) + "\n";
+        StringBuilder temp = new StringBuilder("Here are the tasks in your list:\n");
+        for (int i = 0; i < count; i++) {
+            temp.append(i + 1).append(". ")
+                    .append(task.get(i))
+                    .append("\n");
         }
 
-        System.out.println(line);
+        System.out.println(LINE);
         System.out.print(temp);
-        System.out.println(line);
+        System.out.println(LINE);
     }
 
     /**
@@ -195,7 +196,7 @@ public class UserInterface {
      * @param num the task number to delete (1-based index)
      */
     public void delete(String num) {
-        count-=2;
+        count -= 2;
         String temp = "Noted. I've removed this task:\n" +
                     task.get(Integer.parseInt(num)-1) + "\n" +
                     this.notiNumOfTasks();
@@ -210,8 +211,8 @@ public class UserInterface {
      * @param error the error message to display
      */
     public static void showError(String error) {
-        System.out.println(line);
+        System.out.println(LINE);
         System.out.println(error);
-        System.out.println(line);
+        System.out.println(LINE);
     }
 }

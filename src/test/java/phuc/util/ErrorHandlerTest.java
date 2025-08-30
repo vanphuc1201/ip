@@ -1,4 +1,4 @@
-package phuc.errorhandle;
+package phuc.util;
 
 import org.junit.jupiter.api.Test;
 import phuc.exception.PhucException;

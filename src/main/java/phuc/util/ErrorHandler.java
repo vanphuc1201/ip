@@ -1,4 +1,4 @@
-package phuc.errorhandle;
+package phuc.util;
 
 import phuc.exception.PhucException;
 import phuc.parser.DateTimeProcess;

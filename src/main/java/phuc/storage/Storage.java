@@ -1,6 +1,6 @@
 package phuc.storage;
 
-import phuc.errorhandle.ErrorHandler;
+import phuc.util.ErrorHandler;
 import phuc.model.Task;
 import phuc.model.DeadlineTask;
 import phuc.model.EventTask;
