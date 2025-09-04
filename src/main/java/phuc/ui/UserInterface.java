@@ -1,15 +1,16 @@
 package phuc.ui;
 
-import phuc.model.Task;
-import phuc.model.TaskList;
-import phuc.storage.Storage;
-import phuc.exception.PhucException;
-import phuc.model.DeadlineTask;
-import phuc.model.EventTask;
-import phuc.model.ToDoTask;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
+import phuc.exception.PhucException;
+import phuc.model.DeadlineTask;
+import phuc.model.EventTask;
+import phuc.model.Task;
+import phuc.model.TaskList;
+import phuc.model.ToDoTask;
+import phuc.storage.Storage;
 
 /**
  * User interface class that handles all user interactions and display.
@@ -107,8 +108,8 @@ public class UserInterface {
      * Displays the welcome message.
      */
     public void sayHello() {
-        print(" Hello! I'm Phuc \uD83D\uDE03\uD83D\uDD90\uFE0F\n" +
-                " What can I do for you?");
+        print(" Hello! I'm Phuc \uD83D\uDE03\uD83D\uDD90\uFE0F\n"
+                + " What can I do for you?");
     }
 
     /**
@@ -140,7 +141,7 @@ public class UserInterface {
      * @param num the task number to mark (1-based index)
      */
     public void mark(String num) {
-        int id = Integer.parseInt(num)-1;
+        int id = Integer.parseInt(num) - 1;
         taskList.get(id).setDone();
         print("Nice! I've marked this task as done:\n" + taskList.get(id));
     }
@@ -151,7 +152,7 @@ public class UserInterface {
      * @param num the task number to unmark (1-based index)
      */
     public void unMark(String num) {
-        int id = Integer.parseInt(num)-1;
+        int id = Integer.parseInt(num) - 1;
         taskList.get(id).setNotDone();
         print("OK, I've marked this task as not done yet:\n" + taskList.get(id));
     }
@@ -162,7 +163,7 @@ public class UserInterface {
      * @return a string indicating the current task count
      */
     public String notiNumOfTasks() {
-        return "Now you have " + (count+1) + " tasks in the list.";
+        return "Now you have " + (count + 1) + " tasks in the list.";
     }
 
     /**
@@ -205,12 +206,12 @@ public class UserInterface {
      * Adds a new event task to the list.
      * Displays to the user that the task have been added.
      *
-     * @param newtask the description of the event task
+     * @param newTask the description of the event task
      * @param startDate the event start date and time
      * @param endDate the event end date and time
      */
-    public void event(String newtask, LocalDateTime startDate, LocalDateTime endDate) {
-        taskList.add(new EventTask(newtask, startDate, endDate));
+    public void event(String newTask, LocalDateTime startDate, LocalDateTime endDate) {
+        taskList.add(new EventTask(newTask, startDate, endDate));
         String temp = notiAddTasks() + taskList.get(count) + "\n" + this.notiNumOfTasks();
         print(temp);
         count++;
@@ -223,11 +224,12 @@ public class UserInterface {
      * @param num the task number to delete (1-based index)
      */
     public void delete(String num) {
-        count-=2;
-        String temp = "Noted. I've removed this task:\n" +
-                    taskList.get(Integer.parseInt(num)-1) + "\n" +
-                    this.notiNumOfTasks();
-        taskList.remove(Integer.parseInt(num)-1);
+        count -= 2;
+        String temp = "Noted. I've removed this task:\n"
+                + taskList.get(Integer.parseInt(num) - 1)
+                + "\n"
+                + this.notiNumOfTasks();
+        taskList.remove(Integer.parseInt(num) - 1);
         print(temp);
         count++;
     }

@@ -1,10 +1,12 @@
 package phuc.parser;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import phuc.exception.PhucException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import phuc.exception.PhucException;
 
 public class ProcessInputTest {
     private ProcessInput processInput;

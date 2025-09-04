@@ -4,7 +4,7 @@ package phuc.model;
  * Represents a simple to-do task without any date/time constraints.
  * Extends the base Task class for basic task functionality.
  */
-public class ToDoTask extends Task{
+public class ToDoTask extends Task {
     /**
      * Constructs a new ToDoTask with the specified description.
      *

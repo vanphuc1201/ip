@@ -1,7 +1,8 @@
 package phuc.model;
 
-import phuc.parser.DateTimeProcess;
 import java.time.LocalDateTime;
+
+import phuc.parser.DateTimeProcess;
 
 /**
  * Represents an event task with specific start and end times.
@@ -45,7 +46,10 @@ public class EventTask extends Task {
      */
     @Override
     public String writeToFile() {
-        return "E | " + isDone + " | " + description + " | " + DateTimeProcess.formatForFile(startDate) + " | " + DateTimeProcess.formatForFile(endDate);
+        return "E | " + isDone + " | "
+                + description + " | "
+                + DateTimeProcess.formatForFile(startDate) + " | "
+                + DateTimeProcess.formatForFile(endDate);
     }
 
     /**
@@ -55,6 +59,8 @@ public class EventTask extends Task {
      */
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + DateTimeProcess.formatForDisplay(startDate) + " to: " + DateTimeProcess.formatForDisplay(endDate) + ")";
+        return "[E]" + super.toString()
+                + " (from: " + DateTimeProcess.formatForDisplay(startDate)
+                + " to: " + DateTimeProcess.formatForDisplay(endDate) + ")";
     }
 }
