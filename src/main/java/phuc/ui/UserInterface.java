@@ -17,7 +17,7 @@ import phuc.storage.Storage;
  * Provides methods for displaying messages, handling commands, and managing tasks.
  */
 public class UserInterface {
-    private static final String LINE = "____________________________________________________________";
+    public static final String LINE = "________________________________________";
     private final TaskList taskList;
     private Integer count = 0;
     private final Storage storage;

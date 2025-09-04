@@ -27,7 +27,7 @@ public class ErrorHandler {
             "Oops! A deadline must include a date and time — don’t forget to add it (ಥ_ಥ)";
     /** Error message for unknown command */
     public static final String ERROR_UNKNOWN_COMMAND =
-            "I don’t understand that command. Please try another command! ༼☯﹏☯༽";
+            "I don’t understand that command. Please try another command! (◕︵◕)";
     /** Error message for invalid number format */
     public static final String ERROR_NUMBER_FORMAT =
             "Please enter a valid number for the task index (＞﹏＜)";
