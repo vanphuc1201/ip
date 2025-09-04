@@ -1,9 +1,10 @@
 package phuc.parser;
 
-import phuc.exception.PhucException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import phuc.exception.PhucException;
 
 /**
  * Utility class for parsing and formatting date-time strings.
@@ -18,8 +19,7 @@ public class DateTimeProcess {
             DateTimeFormatter.ofPattern("d/M/yyyy"),
             DateTimeFormatter.ofPattern("d-M-yyyy"),
             DateTimeFormatter.ofPattern("yyyy-MM-dd"),
-            DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma"),
-            DateTimeFormatter.ISO_LOCAL_DATE,
+            DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma"), DateTimeFormatter.ISO_LOCAL_DATE
     };
 
     private static final DateTimeFormatter OUTPUT_DISPLAY_FORMAT =

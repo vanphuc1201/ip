@@ -1,10 +1,10 @@
 package phuc;
 
-import phuc.parser.ProcessInput;
-import phuc.exception.PhucException;
-import phuc.ui.UserInterface;
-
 import java.util.Scanner;
+
+import phuc.exception.PhucException;
+import phuc.parser.ProcessInput;
+import phuc.ui.UserInterface;
 
 /**
  * Main application class for Phuc task manager.

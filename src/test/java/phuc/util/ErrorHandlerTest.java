@@ -1,9 +1,11 @@
 package phuc.util;
 
-import org.junit.jupiter.api.Test;
-import phuc.exception.PhucException;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import phuc.exception.PhucException;
 
 public class ErrorHandlerTest {
 
