@@ -1,6 +1,7 @@
 package phuc.model;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * Represents a list of tasks with various operations for task management.
@@ -14,15 +15,6 @@ public class TaskList {
      */
     public TaskList() {
         this.tasks = new ArrayList<>();
-    }
-
-    /**
-     * Creates a TaskList from an existing list of tasks
-     *
-     * @param tasks the initial list of tasks
-     */
-    public TaskList(ArrayList<Task> tasks) {
-        this.tasks = new ArrayList<>(tasks);
     }
 
     /**
@@ -95,15 +87,10 @@ public class TaskList {
      * @return a task list contain all the task that need searching
      */
     public ArrayList<Task> find(String keyword) {
-        ArrayList<Task> matchingTasks = new ArrayList<>();
-        String searchTerm = keyword.toLowerCase();
-
-        for (Task currentTask : tasks) {
-            if (currentTask.getDescription().toLowerCase().contains(searchTerm)) {
-                matchingTasks.add(currentTask);
-            }
-        }
-
-        return matchingTasks;
+        return tasks.stream()
+                .filter(task -> task.getDescription()
+                        .toLowerCase()
+                        .contains(keyword.toLowerCase()))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }
