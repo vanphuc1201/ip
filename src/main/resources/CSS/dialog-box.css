@@ -43,7 +43,7 @@
 }
 
 .greeting-label {
-    -fx-background-color: derive(pink, 50%);
+    -fx-background-color: #FFCCFF;
 }
 
 .add-label {
@@ -55,9 +55,13 @@
 }
 
 .bye-label {
-    -fx-background-color: derive(pink, 50%);
+    -fx-background-color: #6699FF;
 }
 
 .error-label {
     -fx-background-color: derive(red, 70%);
+}
+
+.sort-label {
+    -fx-background-color: #CCFF33;
 }

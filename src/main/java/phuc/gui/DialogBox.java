@@ -88,6 +88,9 @@ public class DialogBox extends HBox {
      */
     private void changeDialogStyle(String commandType) {
         switch(commandType) {
+        case "sort":
+            dialog.getStyleClass().add("sort-label");
+            break;
         case "list":
             dialog.getStyleClass().add("list-label");
             break;
