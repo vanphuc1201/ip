@@ -1,6 +1,7 @@
 package phuc.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 /**
@@ -15,6 +16,18 @@ public class TaskList {
      */
     public TaskList() {
         this.tasks = new ArrayList<>();
+    }
+
+    /**
+     * Gets a sorted view of tasks by date-time.
+     *
+     * @param ascending true for ascending order (earliest first), false for descending
+     * @return a new sorted ArrayList of tasks
+     */
+    public ArrayList<Task> getSortedTasks(boolean ascending) {
+        return tasks.stream()
+                .sorted(ascending ? Comparator.naturalOrder() : Comparator.reverseOrder())
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**

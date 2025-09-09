@@ -1,10 +1,13 @@
 package phuc.model;
 
+
+import java.time.LocalDateTime;
+
 /**
  * Abstract base class representing a task in the task management system.
  * Provides common functionality for all task types.
  */
-public class Task {
+public abstract class Task implements Comparable<Task> {
     protected String description;
     protected boolean isDone;
 
@@ -74,6 +77,28 @@ public class Task {
      */
     public void setNotDone() {
         this.isDone = false;
+    }
+
+    /**
+     * Gets the date-time for sorting purposes.
+     * For Todo tasks, returns a very distant future date.
+     * For Deadline tasks, returns the deadline.
+     * For Event tasks, returns the start date.
+     *
+     * @return the date-time used for sorting
+     */
+    public abstract LocalDateTime getSortDateTime();
+
+    /**
+     * Compares tasks based on their date-time for sorting.
+     * Tasks without dates (Todo) are placed after dated tasks.
+     *
+     * @param other the other task to compare to
+     * @return negative if this task comes before, positive if after, 0 if equal
+     */
+    @Override
+    public int compareTo(Task other) {
+        return this.getSortDateTime().compareTo(other.getSortDateTime());
     }
 
     /**

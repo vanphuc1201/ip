@@ -1,5 +1,7 @@
 package phuc.model;
 
+import java.time.LocalDateTime;
+
 /**
  * Represents a simple to-do task without any date/time constraints.
  * Extends the base Task class for basic task functionality.
@@ -32,6 +34,17 @@ public class ToDoTask extends Task {
     @Override
     public String writeToFile() {
         return "T | " + isDone + " | " + description;
+    }
+
+    /**
+     * Gives the information of the date
+     *
+     * @return the maximum date since the task can do anytime
+     */
+    @Override
+    public LocalDateTime getSortDateTime() {
+        //To do task without date so should appear after dated task
+        return LocalDateTime.MAX; // Very distant future
     }
 
     /**

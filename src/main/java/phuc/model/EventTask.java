@@ -55,6 +55,16 @@ public class EventTask extends Task {
     }
 
     /**
+     * Return the end date of the event
+     *
+     * @return the end date in form of date time
+     */
+    @Override
+    public LocalDateTime getSortDateTime() {
+        return endDate;
+    }
+
+    /**
      * Returns a string representation of the event task for display.
      *
      * @return a formatted string showing event details and time range

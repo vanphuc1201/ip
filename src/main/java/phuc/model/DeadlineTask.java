@@ -47,6 +47,16 @@ public class DeadlineTask extends Task {
     }
 
     /**
+     * Return the date of the deadline task
+     *
+     * @return the deadline in date time form
+     */
+    @Override
+    public LocalDateTime getSortDateTime() {
+        return deadline;
+    }
+
+    /**
      * Returns a string representation of the deadline task for display.
      *
      * @return a formatted string showing task details and deadline
