@@ -45,9 +45,7 @@ public class UserInterface {
             print("No tasks found for word: " + word);
             return;
         }
-        
-        String listOfFoundedTask =
-                "Here are the matching tasks in your list:\n"
+        String listOfFoundedTask = "Here are the matching tasks in your list:\n"
                         + IntStream.range(0, tasks.size())
                         .mapToObj(i -> (i + 1) + ". " + tasks.get(i))
                         .collect(Collectors.joining("\n", "", "\n"));

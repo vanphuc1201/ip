@@ -18,7 +18,7 @@ public class ErrorHandler {
             "Please enter a number between 1 and %d (T_T)";
     /** Error message for empty description */
     public static final String ERROR_EMPTY_DESCRIPTION =
-            "Hold on — a %s needs a description. Please type something after '%s'（>﹏<）";
+            "Hold on — a todo task needs a description. Please type something after todo（>﹏<）";
     /** Error message for invalid event format */
     public static final String ERROR_EVENT_FORMAT =
             "Oops! An event must include both a start and an end time — don’t forget to add it (ಥ_ಥ)";
@@ -66,10 +66,10 @@ public class ErrorHandler {
      */
     public static void validateDescription(String description)
             throws PhucException {
-        boolean isNotValidDescription = description == null || description.trim().isEmpty();
+        boolean isNotValidDescription = description.isEmpty() || description.trim().isEmpty();
 
         if (isNotValidDescription) {
-            throw new PhucException(String.format(ERROR_EMPTY_DESCRIPTION));
+            throw new PhucException(ERROR_EMPTY_DESCRIPTION);
         }
     }
 
