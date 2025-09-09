@@ -41,6 +41,7 @@ public class ErrorHandler {
      */
     public static void validateTaskIndex(String taskIndexInStringFormat, int maxIndex) throws PhucException {
         boolean isNotValidTaskIndex = taskIndexInStringFormat == null || taskIndexInStringFormat.trim().isEmpty();
+        assert maxIndex >= 0;
 
         if (isNotValidTaskIndex) {
             throw new PhucException(String.format(ERROR_INVALID_TASK_NUMBER, maxIndex - 1));
