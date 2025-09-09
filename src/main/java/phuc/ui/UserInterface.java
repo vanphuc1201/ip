@@ -3,6 +3,8 @@ package phuc.ui;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import phuc.exception.PhucException;
 import phuc.model.DeadlineTask;
@@ -43,17 +45,15 @@ public class UserInterface {
             print("No tasks found for word: " + word);
             return;
         }
-
-        StringBuilder temp = new StringBuilder("Here are the matching tasks in your list:\n");
-
-        for (int i = 0; i < tasks.size(); i++) {
-            temp.append(i + 1).append(". ")
-                    .append(tasks.get(i))
-                    .append("\n");
-        }
+        
+        String listOfFoundedTask =
+                "Here are the matching tasks in your list:\n"
+                        + IntStream.range(0, tasks.size())
+                        .mapToObj(i -> (i + 1) + ". " + tasks.get(i))
+                        .collect(Collectors.joining("\n", "", "\n"));
 
         System.out.println(LINE);
-        System.out.print(temp);
+        System.out.print(listOfFoundedTask);
         System.out.println(LINE);
     }
 
@@ -125,16 +125,14 @@ public class UserInterface {
      * Lists all tasks in the task list.
      */
     public void list() {
-        StringBuilder temp = new StringBuilder("Here are the tasks in your list:\n");
-
-        for (int i = 0; i < count; i++) {
-            temp.append(i + 1).append(". ")
-                    .append(taskList.get(i))
-                    .append("\n");
-        }
+        String listOfTheTask =
+                "Here are the tasks in your list:\n"
+                        + IntStream.range(0, count)
+                                .mapToObj(i -> (i + 1) + ". " + taskList.get(i))
+                                .collect(Collectors.joining("\n", "", "\n"));
 
         System.out.println(LINE);
-        System.out.print(temp);
+        System.out.print(listOfTheTask);
         System.out.println(LINE);
     }
 
