@@ -54,6 +54,9 @@ public class ProcessInput {
         String arg = words.length > 1 ? words[1] : "";
 
         switch (command) {
+        case "sort":
+            handleSortCommand(arg);
+            break;
         case "find":
             ui.find(arg);
             break;
@@ -83,6 +86,16 @@ public class ProcessInput {
         }
 
         ui.saveToStorage();
+    }
+
+    private void handleSortCommand(String direction) throws PhucException {
+        //Check if the direction is valid or not
+        ErrorHandler.validateDirection(direction);
+        if (direction.equals("ascending")) {
+            ui.printSortedTasks(true);
+        } else if (direction.equals("descending")) {
+            ui.printSortedTasks(false);
+        }
     }
 
     /**

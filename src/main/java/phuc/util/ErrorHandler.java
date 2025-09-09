@@ -31,6 +31,24 @@ public class ErrorHandler {
     /** Error message for invalid number format */
     public static final String ERROR_NUMBER_FORMAT =
             "Please enter a valid number for the task index (＞﹏＜)";
+    /** Error message for invalid direction format */
+    public static final String ERROR_DIRECTION_FORMAT =
+            "Please enter ascending or descending for the sorted order (×͡×)";
+
+    /**
+     * Handles the cases where the direction is not in the right format.
+     *
+     * @param direction the order of the list
+     * @throws PhucException if the direction is not ascending or descending
+     */
+    public static void validateDirection(String direction) throws PhucException {
+        boolean isAscending = direction.equals("ascending");
+        boolean isDescending = direction.equals("descending");
+        boolean isValid = isAscending || isDescending;
+        if (!isValid) {
+            throw new PhucException(ERROR_DIRECTION_FORMAT);
+        }
+    }
 
     /**
      * Validates that a task index is within valid bounds.
@@ -64,8 +82,7 @@ public class ErrorHandler {
      * @param description the description to validate
      * @throws PhucException if the description is empty
      */
-    public static void validateDescription(String description)
-            throws PhucException {
+    public static void validateDescription(String description) throws PhucException {
         boolean isNotValidDescription = description.isEmpty() || description.trim().isEmpty();
 
         if (isNotValidDescription) {

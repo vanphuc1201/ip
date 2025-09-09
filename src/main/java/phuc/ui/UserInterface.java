@@ -34,6 +34,23 @@ public class UserInterface {
     }
 
     /**
+     * Prints out the task list sorted by the deadline order
+     *
+     * @param ascending is a boolean parameter, true if need a ascending task, false other wise
+     */
+    public void printSortedTasks(boolean ascending) {
+        String sortedTaskList =
+                "Here are the sorted tasks in your list:\n"
+                        + IntStream.range(0, count)
+                        .mapToObj(i -> (i + 1) + ". " + taskList.getSortedTasks(ascending).get(i))
+                        .collect(Collectors.joining("\n", "", "\n"));
+
+        System.out.println(LINE);
+        System.out.print(sortedTaskList);
+        System.out.println(LINE);
+    }
+
+    /**
      * Finds all the tasks contain keyword then print out to the user
      *
      * @param word a string keyword that need to find
