@@ -29,6 +29,7 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
+            stage.setTitle("Phuc chatbot - Your Personal Task Manager");
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setPhuc(phuc);
             stage.setMinHeight(630);
