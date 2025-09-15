@@ -1,15 +1,6 @@
 # Phuc Task Manager
 
-<div align="center">
-
-![Java](https://img.shields.io/badge/Java-17%2B-blue)
-![JavaFX](https://img.shields.io/badge/JavaFX-17-orange)
-![CSS](https://img.shields.io/badge/CSS-3-blueviolet)
-![Gradle](https://img.shields.io/badge/Gradle-7%2B-02303A?logo=gradle&logoColor=white)
-
 A sleek and efficient task management application that helps you stay organized with todos, deadlines, and events.
-
-</div>
 
 ---
 
