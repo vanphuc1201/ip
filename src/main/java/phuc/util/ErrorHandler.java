@@ -34,6 +34,13 @@ public class ErrorHandler {
     /** Error message for invalid direction format */
     public static final String ERROR_DIRECTION_FORMAT =
             "Please enter ascending or descending for the sorted order (×͡×)";
+    /** Error message for invalid start date after end date */
+    public static final String ERROR_DAY_FORMAT =
+            "Oh no! The start date cannot be after the end date. "
+                    + "Please make sure your event starts before it ends :)";
+    /** Error message for invalid start date equal end date */
+    public static final String ERROR_DAY_FORMAT_EQUALS =
+            "Oh no! The start date and end date cannot be the same. :(";
 
     /**
      * Handles the cases where the direction is not in the right format.
@@ -124,6 +131,14 @@ public class ErrorHandler {
 
         if (startDate.isEmpty() || endDate.isEmpty()) {
             throw new PhucException(ERROR_EVENT_FORMAT);
+        }
+
+        if (validateAndParseDateTime(startDate).isAfter(validateAndParseDateTime(endDate))) {
+            throw new PhucException(ERROR_DAY_FORMAT);
+        }
+
+        if (validateAndParseDateTime(startDate).isEqual(validateAndParseDateTime(endDate))) {
+            throw new PhucException(ERROR_DAY_FORMAT_EQUALS);
         }
 
         String[] eventParts = new String[3];
