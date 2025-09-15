@@ -34,6 +34,41 @@ public class UserInterface {
     }
 
     /**
+     * Displays help information with all available commands and their usage.
+     */
+    public void help() {
+        String helpMessage =
+                "PHUC COMMAND HELP\n"
+                        + "=================\n\n"
+                        + "LIST MANAGEMENT:\n"
+                        + "• list - Show all tasks\n"
+                        + "• sort ascending - Sort tasks by date (oldest first)\n"
+                        + "• sort descending - Sort tasks by date (newest first)\n"
+                        + "• find <keyword> - Search for tasks\n\n"
+                        + "TASK OPERATIONS:\n"
+                        + "• mark <number> - Mark task as done\n"
+                        + "• unmark <number> - Mark task as not done\n"
+                        + "• delete <number> - Remove a task\n\n"
+                        + "ADD TASKS:\n"
+                        + "• todo <description>\n"
+                        + "      - Add a simple todo task\n"
+                        + "      Example: todo Buy milk\n\n"
+                        + "• deadline <description> /by <date>\n"
+                        + "      - Add task with deadline\n"
+                        + "      Example: deadline Submit report /by 25/12/2024 2359\n\n"
+                        + "• event <description> /from <date> /to <date>\n"
+                        + "      - Add event with time range\n"
+                        + "      Example: event Meeting /from 25/12/2024 1000 /to 25/12/2024 1200\n\n"
+                        + "DATE FORMATS:\n"
+                        + "25/12/2024 2359, 25-12-2024 2359, 2024-12-25 2359, 25/12/2024\n\n"
+                        + "APPLICATION:\n"
+                        + "• help - Show this help message\n"
+                        + "• bye - Exit the application";
+
+        print(helpMessage);
+    }
+
+    /**
      * Prints out the task list sorted by the deadline order
      *
      * @param ascending is a boolean parameter, true if need a ascending task, false other wise

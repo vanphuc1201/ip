@@ -54,6 +54,9 @@ public class ProcessInput {
         String arg = words.length > 1 ? words[1] : "";
 
         switch (command) {
+        case "help":
+            ui.help();
+            break;
         case "sort":
             handleSortCommand(arg);
             break;
