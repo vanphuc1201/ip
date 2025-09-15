@@ -8,7 +8,7 @@ import phuc.exception.PhucException;
  */
 public class Launcher {
     /**
-     * The main method that starts the Phuc application.
+     * Starts the Phuc application.
      *
      * @param args command line arguments (not used)
      * @throws PhucException if any application-specific error occurs during startup

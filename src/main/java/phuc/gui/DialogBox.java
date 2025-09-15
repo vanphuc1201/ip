@@ -57,7 +57,7 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Factory method to create a user message dialog box.
+     * Creates a user message dialog box.
      *
      * @param text the message text to display
      * @param img the user avatar image
@@ -82,7 +82,7 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Check the type of command and apply the corresponding design to the command type.
+     * Checks the type of command and apply the corresponding design to the command type.
      *
      * @param commandType the command of user in string format.
      */
