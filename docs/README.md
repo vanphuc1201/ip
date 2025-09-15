@@ -23,17 +23,17 @@ A sleek and efficient task management application that helps you stay organized 
 ```
 # Method 1: Double-click the JAR file
 # Method 2: Command line
-java -jar phuc.jar
+java -jar Phuc.jar
 ```
 
 ### Using Phuc
 
 ```
 # Command Line Interface
-java -cp phuc.jar phuc.Launcher
+java -cp Phuc.jar phuc.Launcher
 
 # Graphical Interface (default)
-java -jar phuc.jar
+java -jar Phuc.jar
 ```
 
 ## 📋 Features
