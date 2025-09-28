@@ -64,6 +64,7 @@ public class Phuc {
         if (!haveLoadData) {
             pi.loadDataFromStorage();
             haveLoadData = true;
+            System.out.println("Loading data...");
         }
         return OutputCapture.captureOutput(() -> {
             try {
